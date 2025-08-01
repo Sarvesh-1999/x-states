@@ -15,7 +15,8 @@ const Xstates = () => {
   useEffect(() => {
     fetch("https://crio-location-selector.onrender.com/countries")
       .then((res) => res.json())
-      .then((data) => setAllCountries(data));
+      .then((data) => setAllCountries(data))
+      .catch((err) => console.error("Error while countries api ", err));
   }, []);
 
   useEffect(() => {
@@ -25,7 +26,8 @@ const Xstates = () => {
       `https://crio-location-selector.onrender.com/country=${selectedCountry}/states`
     )
       .then((res) => res.json())
-      .then((data) => setAllStates(data));
+      .then((data) => setAllStates(data))
+      .catch((err) => console.error("Error while states api ", err));
   }, [selectedCountry]);
 
   useEffect(() => {
@@ -35,7 +37,8 @@ const Xstates = () => {
       ` https://crio-location-selector.onrender.com/country=${selectedCountry}/state=${selectedState}/cities`
     )
       .then((res) => res.json())
-      .then((data) => setAllCites(data));
+      .then((data) => setAllCites(data))
+      .catch((err) => console.error("Error while cities api ", err));
   }, [selectedState]);
 
   return (
